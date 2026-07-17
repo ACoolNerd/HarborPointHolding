@@ -7,8 +7,8 @@
 ## PART 1 — HubSpot Account (10 min)
 
 1. Go to **hubspot.com → Get started free**
-2. Sign up with **kassmgonzales@gmail.com** (switch to hello@harborpointholding.com later once email is set up)
-3. Company: Harbor Point Holding · Industry: Real Estate · Size: 1
+2. Sign up with the approved **Harbor Point operations email**. Do not use an individual's public identity for the neutral market account.
+3. Company: Harbor Point Holding · Industry: Real Estate · Size: use the current operating team size
 4. Skip all onboarding upsells → land on the dashboard
 
 **Grab Value #1 — Portal ID:**
@@ -37,7 +37,7 @@ Settings ⚙ → **Data Management → Properties** → "Contact properties" →
 1. **Marketing → Forms → Create form → Embedded form → Blank template**
 2. Name it: **Harbor Point — Site Intake**
 3. Drag in these fields: **First name · Email · Phone number · City · Lead Source Page · Property Type · Goal · Timeline**
-4. **Options tab** → "Send submission email notifications to" → add Kassandra's email ← *this is her instant lead alert*
+4. **Options tab** → "Send submission email notifications to" → add the Harbor Point lead-operations email ← *this is the intake alert*
 5. **Publish**
 
 **Grab Value #2 — Form GUID:**
@@ -50,7 +50,7 @@ On the publish/share screen, the embed code contains `formId: "XXXXXXXX-XXXX-XXX
 1. **calendly.com → Sign up** (Google sign-in with her Gmail is fine)
 2. Create one event type: **"Consultation — 30 min"** · phone call or Google Meet · add 15-min buffer after
 3. Availability: her real working windows
-4. **Copy Link** — e.g. `https://calendly.com/kassandra-gonzales/consultation`
+4. **Copy Link** — use an approved neutral Harbor Point booking URL
 
 **Grab Value #3 — that link.**
 
@@ -68,7 +68,7 @@ bash wire-config.sh PORTAL_ID FORM_GUID CALENDLY_URL
 
 Real example shape:
 ```bash
-bash wire-config.sh 48293716 7f3e9a12-4b6c-4d8e-9f01-2a3b4c5d6e7f https://calendly.com/kassandra-gonzales/consultation
+bash wire-config.sh PORTAL_ID FORM_GUID https://calendly.com/YOUR_APPROVED_EVENT
 ```
 
 It rewrites all six pages and confirms each one. Then:
@@ -105,6 +105,6 @@ Then delete the test contacts (Contacts → select → Delete).
 
 ## DONE MEANS
 
-Every quiz on the live domain creates a HubSpot contact tagged with its lane, emails Kassandra instantly, and offers direct booking. From here the machine runs itself — the next work is **traffic**: first mail batch, first search campaign, first LinkedIn touches from `scripts/CRE-OUTREACH-SCRIPTS.md`.
+Every successful quiz creates or updates a HubSpot contact tagged with its source lane and alerts the Harbor Point lead queue. A Deal, referral, or licensed-practice handoff occurs only through the approved backend or supported automation. External outreach remains human-approved.
 
 *0 → ∞*
