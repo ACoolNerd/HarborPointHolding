@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harbor Point Holding — System Blueprint | Tech · Marketing · CRM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B1E24;--deep:#12303A;--brass:#C4913C;--brass-hi:#E0B266;--fog:#E9EFEA;--tide:#6FA3A8;
+--line:rgba(196,145,60,.3);--hair:rgba(111,163,168,.18);--maxw:1020px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--fog);font-family:'Public Sans',sans-serif;line-height:1.65}
+h1,h2,h3{font-family:'Marcellus',serif;font-weight:400;line-height:1.15}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--tide);font-weight:600}
+header{padding:70px 0 40px;border-bottom:1px solid var(--line)}
+header h1{font-size:clamp(34px,5vw,52px);margin:16px 0 12px}
+header h1 em{font-style:normal;color:var(--brass)}
+header p{color:var(--tide);max-width:60ch}
+section{padding:56px 0;border-bottom:1px solid var(--hair)}
+.sec-head h2{font-size:clamp(26px,3.4vw,36px);margin:12px 0 24px}
+.flow{display:flex;flex-direction:column;gap:0;margin:28px 0}
+.node{background:var(--deep);border:1px solid var(--hair);border-radius:8px;padding:22px 26px;position:relative}
+.node b{font-family:'Marcellus',serif;font-size:18px;display:block;margin-bottom:6px}
+.node b span{color:var(--brass)}
+.node p{color:var(--tide);font-size:14.5px}
+.arrow{align-self:center;color:var(--brass);font-size:22px;padding:8px 0;font-family:'Marcellus',serif}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{background:var(--deep);border-top:2px solid var(--brass);padding:22px 22px}
+.card h3{font-size:19px;margin-bottom:8px}
+.card p,.card li{color:var(--tide);font-size:14.5px}
+.card ul{padding-left:18px;margin-top:8px}
+.card li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14.5px}
+th{font-family:'Public Sans',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);text-align:left;padding:10px 14px;border-bottom:1px solid var(--line)}
+td{padding:12px 14px;border-bottom:1px solid var(--hair);color:var(--fog);vertical-align:top}
+td.mut{color:var(--tide)}
+code{background:rgba(196,145,60,.12);color:var(--brass-hi);padding:2px 7px;border-radius:4px;font-size:13px}
+.day{border-left:2px solid var(--brass);padding:4px 0 4px 22px;margin-bottom:22px}
+.day b{font-family:'Marcellus',serif;font-size:17px;display:block}
+.day p{color:var(--tide);font-size:14.5px}
+footer{padding:40px 0;color:var(--tide);font-size:12.5px}
+@media print{body{background:#fff;color:#111}.node,.card{background:#f5f5f2;border-color:#ddd}td,th{color:#111}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Harbor Point Holding — Internal Blueprint v1.0</span>
+    <h1>The System, <em>Charted.</em></h1>
+    <p>How the tech, the marketing, the connections, and the CRM work together — and what her day actually looks like inside it. One stack, five lanes, zero leads lost.</p>
+  </div>
+</header>
+
+<!-- ============ 1. THE STACK ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Layer I</span>
+    <div class="sec-head"><h2>The Tech Stack</h2></div>
+    <table>
+      <tr><th>Layer</th><th>Tool</th><th>Job</th><th>Cost</th></tr>
+      <tr><td><b>Domain</b></td><td>GoDaddy</td><td class="mut">harborpointholding.com + hpholdingsct.com (redirect). DNS points to hosting.</td><td class="mut">~$25/yr</td></tr>
+      <tr><td><b>Hosting</b></td><td>Vercel (or Netlify)</td><td class="mut">Serves the 6 static pages. Free tier handles this traffic easily; instant deploys when pages update.</td><td class="mut">$0</td></tr>
+      <tr><td><b>Site</b></td><td>6 HTML pages</td><td class="mut">1 hub + 5 lane landing pages. Self-contained, no CMS, no plugins to break. Each has its own <code>SOURCE_TAG</code>.</td><td class="mut">$0</td></tr>
+      <tr><td><b>CRM</b></td><td>HubSpot (free tier to start)</td><td class="mut">Every intake lands here. Contacts, pipeline, notifications, email follow-up.</td><td class="mut">$0–50/mo</td></tr>
+      <tr><td><b>Booking</b></td><td>Calendly</td><td class="mut">One event type: "Consultation — 30 min." Embedded on every completion screen with UTM source.</td><td class="mut">$0–12/mo</td></tr>
+      <tr><td><b>Phone</b></td><td>Google Voice or OpenPhone</td><td class="mut">One business number across all pages. Texts + calls to her cell without exposing it.</td><td class="mut">$0–15/mo</td></tr>
+      <tr><td><b>Email</b></td><td>Google Workspace</td><td class="mut">hello@harborpointholding.com — required for HubSpot sending + Calendly professionalism.</td><td class="mut">~$7/mo</td></tr>
+    </table>
+    <p style="color:var(--tide);font-size:14.5px">Total run cost: <b style="color:var(--brass)">under ~$85/month</b> at full build, near $0 to launch. No developers needed after deploy — content edits are single-file changes.</p>
+  </div>
+</section>
+
+<!-- ============ 2. MARKETING ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Layer II</span>
+    <div class="sec-head"><h2>The Marketing Structure</h2></div>
+    <p style="color:var(--tide);margin-bottom:24px">Each lane is its own campaign with its own audience, its own message, and its own landing page. Traffic never hits a generic homepage — it lands on the page built for exactly that person.</p>
+    <table>
+      <tr><th>Lane</th><th>Who We're Reaching</th><th>Traffic Sources</th><th>Lands On</th></tr>
+      <tr><td><b>Sell Fast</b></td><td class="mut">Homeowners who need speed: relocation, inheritance, repairs</td><td class="mut">Google Search ads ("sell my house fast CT"), Facebook local, direct mail, bandit-adjacent signage</td><td><code>hp-sell-fast</code></td></tr>
+      <tr><td><b>Lifeline</b></td><td class="mut">Owners with lis pendens filings (from the town land-records list)</td><td class="mut">Direct mail (attorney-reviewed letters), door knocking, targeted search — never retargeting ads</td><td><code>hp-lifeline</code></td></tr>
+      <tr><td><b>Commercial</b></td><td class="mut">CRE owners: vacancy, estate sales, exit-ready</td><td class="mut">LinkedIn outreach, LoopNet/Crexi presence, broker referral network, direct mail to LLC owners</td><td><code>hp-commercial</code></td></tr>
+      <tr><td><b>Advisory</b></td><td class="mut">Owners sitting on underused property, stalled projects</td><td class="mut">LinkedIn content, Google Search ("zoning consultant CT"), referrals from architects/attorneys</td><td><code>hp-advisory</code></td></tr>
+      <tr><td><b>Landlord</b></td><td class="mut">Tired landlords, accidental landlords, small portfolios</td><td class="mut">Facebook landlord groups, direct mail to absentee owners (tax records), REIA meetups</td><td><code>hp-landlord</code></td></tr>
+    </table>
+    <div class="grid3" style="margin-top:24px">
+      <div class="card"><h3>Attribution Rule</h3><p>Every ad, letter, and post links to its lane page — never the hub. The hub is for organic search, referrals, and the curious. Source tags do the rest.</p></div>
+      <div class="card"><h3>Content Cadence</h3><p>2 posts/week per active channel: one market insight, one proof point (closed deal, before/after, testimonial). Batch monthly.</p></div>
+      <div class="card"><h3>The Sourcing Engine</h3><p>Weekly pull of lis pendens filings + absentee-owner records from town land records → mail list → Lifeline &amp; Landlord lanes. This is the proprietary edge.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. THE CONNECTION ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Layer III</span>
+    <div class="sec-head"><h2>The Connection — How a Lead Flows</h2></div>
+    <div class="flow">
+      <div class="node"><b>1 · Visitor lands on a lane page <span>(source known instantly)</span></b><p>Ad, letter, or search brings them to their lane. The page's <code>SOURCE_TAG</code> is already set — attribution starts before they type a word.</p></div>
+      <div class="arrow">↓</div>
+      <div class="node"><b>2 · Conversational intake qualifies them <span>(60 seconds)</span></b><p>Chat-style quiz captures property type, situation, timeline, town, and contact info. Feels like a conversation, works like a qualification form.</p></div>
+      <div class="arrow">↓</div>
+      <div class="node"><b>3 · One submission, three simultaneous actions</b><p>On completion the page fires the HubSpot Forms API with every answer + the source tag. HubSpot then: (a) creates/updates the contact, (b) drops them into the pipeline, (c) triggers her instant notification.</p></div>
+      <div class="arrow">↓</div>
+      <div class="node"><b>4 · She gets the alert <span>(with the source in the subject)</span></b><p>Email + mobile push: "New Lead — Lifeline — Waterbury — ASAP." She knows the lane, the town, and the urgency before she opens it.</p></div>
+      <div class="arrow">↓</div>
+      <div class="node"><b>5 · Lead books direct via Calendly</b><p>The completion screen offers "Book Direct" with <code>utm_source</code> attached. Booking auto-syncs to her calendar and logs on the HubSpot contact.</p></div>
+      <div class="arrow">↓</div>
+      <div class="node"><b>6 · Automated follow-up covers the gap</b><p>If no booking in 1 hour: HubSpot workflow sends a warm follow-up email with her Calendly link. Day 2 and Day 5 touches follow automatically until they book or reply.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. CRM ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Layer IV</span>
+    <div class="sec-head"><h2>The CRM — HubSpot Setup</h2></div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Custom Properties (create these first)</h3>
+        <ul>
+          <li><code>lead_source_page</code> — which lane page (the tag)</li>
+          <li><code>property_type</code> — asset type from intake</li>
+          <li><code>goal</code> — situation / motivation</li>
+          <li><code>timeline</code> — urgency band</li>
+          <li><code>city</code> — CT town (standard field)</li>
+          <li><code>deal_lane</code> — Sell Fast / Lifeline / Commercial / Advisory / Landlord</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Pipeline Stages</h3>
+        <ul>
+          <li><b>New Lead</b> — just submitted, untouched</li>
+          <li><b>Contacted</b> — she's reached out or they booked</li>
+          <li><b>Consultation Held</b> — call/meeting done</li>
+          <li><b>Offer / Proposal Out</b> — number or plan delivered</li>
+          <li><b>Under Contract / Engaged</b> — signed</li>
+          <li><b>Closed Won / Closed Lost</b> — with lost-reason logged</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Workflows (automations)</h3>
+        <ul>
+          <li><b>Instant Alert:</b> form submit → email + push to her with lane, town, timeline in subject</li>
+          <li><b>Hot Lead Flag:</b> timeline = "ASAP" OR lane = "Lifeline" → mark priority, SMS-level alert</li>
+          <li><b>No-Booking Nudge:</b> +1hr, +2d, +5d follow-up emails with Calendly link, stop on booking/reply</li>
+          <li><b>Stale Lead Sweep:</b> 14 days no activity → task on her dashboard to call or close out</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Views &amp; Reporting</h3>
+        <ul>
+          <li><b>Today Board:</b> New + Hot leads, sorted by timeline</li>
+          <li><b>Lane Report:</b> leads &amp; closes by <code>lead_source_page</code> — shows which marketing actually pays</li>
+          <li><b>Town Heatmap:</b> leads by city — tells her where to aim the next mail drop</li>
+          <li><b>Weekly digest email:</b> auto-sent Monday 8 AM</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. HER DAY ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Layer V</span>
+    <div class="sec-head"><h2>How It Works For Her — A Tuesday</h2></div>
+    <div class="day"><b>8:00 AM — One dashboard, coffee in hand</b><p>Opens the HubSpot Today Board. Three new leads overnight: a Lifeline in Waterbury (ASAP — already flagged hot), a Landlord in Bristol, an Advisory in Norwalk. Two already booked themselves on Calendly.</p></div>
+    <div class="day"><b>8:15 AM — Priority call</b><p>She calls the Waterbury Lifeline lead first. Every intake answer is on the contact record — she opens with "I saw you're a few payments behind and want to protect your equity" instead of "so tell me about your situation."</p></div>
+    <div class="day"><b>10:30 AM — Booked consultations run themselves</b><p>Calendly consults fire with Zoom/phone links already sent. Notes go straight onto the HubSpot record; she drags the deal card to "Consultation Held" when done.</p></div>
+    <div class="day"><b>1:00 PM — Sourcing hour (weekly)</b><p>Pulls new lis pendens filings from target town land records into the tracking sheet. Mail merge letters go out; those owners will land on the Lifeline page with its own source tag — closing the loop.</p></div>
+    <div class="day"><b>4:00 PM — Zero leads chased manually</b><p>Everyone who didn't book is inside the automated nudge sequence. Nothing sits untouched; nothing depends on her memory.</p></div>
+    <div class="day"><b>Friday — The numbers decide the marketing</b><p>Lane Report shows Lifeline mail converting at 3× the Facebook spend. Next month's budget shifts accordingly — the source tags turn every dollar into a measurable bet.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Harbor Point Holding — System Blueprint v1.0 · Prepared July 2026 · Companion to the 6-page site build. Not legal, tax, or investment advice; foreclosure outreach materials should be attorney-reviewed under Connecticut law before deployment.</div>
+</footer>
+</body>
+</html>
