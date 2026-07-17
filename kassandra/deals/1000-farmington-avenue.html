@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confidential Deal Room: 1000 Farmington Avenue | KGrace CRE Consulting</title>
+<meta name="description" content="Secure underwriting data room for 1000 Farmington Avenue, West Hartford, CT. Prepared by KGrace CRE Consulting for diligence and feasibility reviews.">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ HARBOR POINT HOLDING — DESIGN TOKENS ============ */
+:root{
+  --ink:#0B1E24; --deep:#12303A; --brass:#C4913C; --brass-hi:#E0B266;
+  --fog:#E9EFEA; --tide:#6FA3A8; --line:rgba(196,145,60,.3);
+  --hair:rgba(111,163,168,.18); --maxw:1140px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--fog);font-family:'Public Sans',sans-serif;line-height:1.65;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Marcellus',serif;font-weight:400;line-height:1.15;letter-spacing:.01em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%}
+.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--tide);font-weight:600}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* ============ LOCK GATE ============ */
+#lock-gate{position:fixed;inset:0;background:var(--ink);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px}
+.lock-card{background:var(--deep);border:1px solid var(--line);padding:40px 30px;border-radius:8px;max-width:440px;width:100%;text-align:center;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.lock-logo{width:80px;height:80px;margin:0 auto 20px}
+.lock-card h2{font-size:24px;margin-bottom:12px}
+.lock-card p{color:var(--tide);font-size:13.5px;margin-bottom:24px}
+.lock-input{width:100%;background:rgba(233,239,234,.05);border:1px solid rgba(233,239,234,.2);border-radius:4px;padding:12px 14px;color:var(--fog);text-align:center;font-size:16px;letter-spacing:.1em;margin-bottom:14px}
+.lock-btn{width:100%;background:var(--brass);color:var(--ink);font-weight:700;padding:12px 0;border:none;border-radius:4px;cursor:pointer;font-family:'Public Sans',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+.lock-btn:hover{background:var(--brass-hi)}
+.lock-error{color:#ef4444;font-size:12.5px;margin-top:10px;display:none}
+
+/* ============ LAYOUT ============ */
+#dashboard{display:none}
+nav{position:sticky;top:0;z-index:60;background:rgba(11,30,36,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.nav-inner{display:flex;align-items:center;gap:32px;padding:14px 24px;max-width:var(--maxw);margin:0 auto}
+.logo-box{display:flex;align-items:center;gap:12px}
+.logo-img{width:42px;height:42px;flex:none}
+.logo-text{display:flex;flex-direction:column;gap:1px}
+.logo-text b{font-family:'Marcellus',serif;font-weight:400;font-size:15px;letter-spacing:.04em}
+.logo-text b span{color:var(--brass)}
+.logo-text small{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--tide);font-weight:600}
+.nav-status{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--tide)}
+.nav-status .pulse-green{width:8px;height:8px;border-radius:50%;background:#10B981;position:relative}
+.nav-status .pulse-green::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:1px solid #10B981;animation:beam 2s infinite}
+
+/* ============ PROFILE HEADER ============ */
+.header-hero{padding:50px 0 40px;border-bottom:1px solid var(--hair);background:linear-gradient(180deg, rgba(18,48,58,.2) 0%, transparent 100%)}
+.profile-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.profile-info h1{font-size:clamp(30px,4.5vw,42px);margin:12px 0 8px}
+.profile-info p{color:var(--tide);font-size:15px;max-width:54ch}
+.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;background:rgba(233,239,234,.03);padding:20px;border:1px solid var(--hair);border-radius:6px}
+.p-stat{text-align:center}
+.p-stat span{display:block;font-size:10px;text-transform:uppercase;color:var(--tide);letter-spacing:.1em;margin-bottom:4px}
+.p-stat b{font-family:'Marcellus',serif;font-size:22px;color:var(--brass)}
+
+/* ============ DILIGENCE INTERFACE ============ */
+.content-grid{display:grid;grid-template-columns:1fr 340px;gap:40px;padding:50px 0 80px;align-items:start}
+@media(max-width:920px){.profile-grid, .content-grid{grid-template-columns:1fr}.profile-stats{margin-top:20px}}
+
+/* tracker */
+.tracker-card{background:var(--deep);border:1px solid var(--line);border-radius:6px;padding:24px}
+.tracker-header{display:flex;align-items:center;justify-content:between;border-bottom:1px solid var(--hair);padding-bottom:16px;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.tracker-title h2{font-size:20px;color:var(--brass)}
+.tracker-title p{font-size:12.5px;color:var(--tide)}
+.tracker-progress{text-align:right;margin-left:auto}
+.progress-nums{font-size:18px;font-family:'Marcellus',serif;color:var(--brass)}
+.progress-bar-shell{width:140px;height:5px;background:rgba(233,239,234,.07);border-radius:3px;margin-top:6px;overflow:hidden}
+.progress-bar-fill{height:100%;background:var(--brass);width:0;transition:width .4s}
+
+.section-group{margin-bottom:30px;border:1px solid var(--hair);border-radius:4px;overflow:hidden}
+.section-head{background:rgba(233,239,234,.02);padding:14px 20px;font-family:'Marcellus',serif;font-size:15px;color:var(--brass);letter-spacing:.05em;border-bottom:1px solid var(--hair);display:flex;justify-content:between;align-items:center}
+.section-head span{color:var(--tide);font-family:'Public Sans',sans-serif;font-size:12px}
+.doc-list{list-style:none}
+.doc-item{padding:14px 20px;border-bottom:1px solid var(--hair);display:flex;align-items:center;justify-content:between;font-size:13.5px;transition:background .2s}
+.doc-item:last-child{border-bottom:none}
+.doc-item:hover{background:rgba(233,239,234,.01)}
+.doc-info{display:flex;align-items:center;gap:10px}
+.doc-icon{color:var(--tide);font-size:16px}
+.doc-name{color:var(--fog)}
+.doc-status{display:flex;align-items:center;gap:12px;margin-left:auto}
+.status-badge{font-size:11px;text-transform:uppercase;letter-spacing:.08em;padding:4px 8px;border-radius:3px;font-weight:600}
+.status-pending{background:rgba(196,145,60,.12);color:var(--brass-hi)}
+.status-received{background:rgba(16,185,129,.12);color:#10B981}
+.upload-btn{background:transparent;border:1px solid var(--brass);color:var(--brass-hi);font-size:11px;font-weight:600;padding:6px 12px;border-radius:3px;cursor:pointer;text-transform:uppercase;letter-spacing:.05em;transition:all .18s}
+.upload-btn:hover{background:var(--brass);color:var(--ink)}
+
+/* sidebar */
+.sidebar{display:flex;flex-direction:column;gap:26px}
+.side-card{background:var(--deep);border:1px solid var(--line);border-radius:6px;padding:24px}
+.side-card h3{font-size:16px;color:var(--brass);margin-bottom:12px;letter-spacing:.05em;text-transform:uppercase}
+.side-card p{font-size:13px;color:var(--tide);line-height:1.6;margin-bottom:18px}
+.spec-list{list-style:none;font-size:13px;color:var(--tide)}
+.spec-list li{margin-bottom:8px;border-bottom:1px dashed var(--hair);padding-bottom:6px;display:flex;justify-content:between}
+.spec-list li b{color:var(--fog)}
+.sidebar-input{width:100%;background:rgba(233,239,234,.05);border:1px solid rgba(233,239,234,.2);border-radius:4px;padding:10px 12px;color:var(--fog);font-size:13.5px;margin-bottom:10px}
+.sidebar-btn{width:100%;background:var(--brass);color:var(--ink);font-weight:700;padding:10px 0;border:none;border-radius:4px;cursor:pointer;font-family:'Public Sans',sans-serif;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+.sidebar-btn:hover{background:var(--brass-hi)}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:36px 0;font-size:12px;color:var(--tide);background:rgba(11,30,36,.5)}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+  1. CONFIDENTIAL LOCK GATE
+================================================================= -->
+<div id="lock-gate">
+  <div class="lock-card">
+    <div class="lock-logo">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="100" rx="8" fill="#047857"/>
+        <path d="M50 25 L12 16 L12 30 Z" fill="#FBBF24" opacity="0.7"/>
+        <path d="M50 25 L88 16 L88 30 Z" fill="#FBBF24" opacity="0.7"/>
+        <path d="M26 22 H36 V42 H64 V22 H74 V78 H64 V56 H36 V78 H26 Z" fill="#0B1E24"/>
+        <path d="M42 58 L45 28 H55 L58 58 Z" fill="#12303A" stroke="#0B1E24" stroke-width="1.5"/>
+        <rect x="46" y="24" width="8" height="4" fill="#0B1E24"/>
+        <path d="M45 24 Q50 17 55 24 Z" fill="#0B1E24"/>
+        <path d="M22 68 C35 78 65 78 78 68 L73 72 C62 80 38 80 27 72 Z" fill="#12303A"/>
+        <rect x="49" y="58" width="2" height="18" fill="#12303A"/>
+      </svg>
+    </div>
+    <h2>KGrace CRE Consulting</h2>
+    <p>Confidential Underwriting Virtual Data Room (VDR)<br><strong>Property: 1000 Farmington Avenue, West Hartford</strong></p>
+    <input type="password" id="passcode-input" class="lock-input" placeholder="ENTER SECURE PASSCODE" autofocus>
+    <button class="lock-btn" onclick="verifyPasscode()">Verify Access Credentials</button>
+    <div class="lock-error" id="lock-err-msg">Invalid passcode. Please enter valid deal credentials. (demo: 1000-FARMINGTON)</div>
+    <p style="margin-top:16px;font-size:11px;opacity:0.6">Demo Passcode: <code>1000-FARMINGTON</code></p>
+  </div>
+</div>
+
+<!-- ================================================================
+  2. SECURE DASHBOARD CONTENT
+================================================================= -->
+<div id="dashboard">
+  <nav>
+    <div class="nav-inner">
+      <div class="logo-box">
+        <div class="logo-img">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="8" fill="#047857"/>
+            <path d="M50 25 L12 16 L12 30 Z" fill="#FBBF24" opacity="0.7"/>
+            <path d="M50 25 L88 16 L88 30 Z" fill="#FBBF24" opacity="0.7"/>
+            <path d="M26 22 H36 V42 H64 V22 H74 V78 H64 V56 H36 V78 H26 Z" fill="#0B1E24"/>
+            <path d="M42 58 L45 28 H55 L58 58 Z" fill="#12303A" stroke="#0B1E24" stroke-width="1.5"/>
+            <rect x="46" y="24" width="8" height="4" fill="#0B1E24"/>
+            <path d="M45 24 Q50 17 55 24 Z" fill="#0B1E24"/>
+            <path d="M22 68 C35 78 65 78 78 68 L73 72 C62 80 38 80 27 72 Z" fill="#12303A"/>
+            <rect x="49" y="58" width="2" height="18" fill="#12303A"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <b>KGRACE <span>CRE CONSULTING</span></b>
+          <small>Confidential Underwriting Portal</small>
+        </div>
+      </div>
+      <div class="nav-status">
+        <span class="pulse-green"></span>
+        Secure Connection Active
+      </div>
+    </div>
+  </nav>
+
+  <header class="header-hero">
+    <div class="wrap profile-grid">
+      <div class="profile-info">
+        <div class="coords">41.7610°N · 72.7412°W — West Hartford, CT</div>
+        <h1>1000 Farmington Avenue</h1>
+        <p>Virtual Data Room established by KGrace CRE Consulting for diligence review, developmental feasibility underwrite, and lender/partnership coordination.</p>
+      </div>
+      <div class="profile-stats">
+        <div class="p-stat">
+          <span>Gross Area</span>
+          <b>62,939 SF</b>
+        </div>
+        <div class="p-stat">
+          <span>Living Area</span>
+          <b>30,324 SF</b>
+        </div>
+        <div class="p-stat">
+          <span>Site Size</span>
+          <b>0.67 Ac</b>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap content-grid">
+    <section class="tracker-card">
+      <div class="tracker-header">
+        <div class="tracker-title">
+          <h2>Diligence Document Tracker</h2>
+          <p>Provide the requested documents below to advance institutional underwriting.</p>
+        </div>
+        <div class="tracker-progress">
+          <div class="progress-nums" id="progress-text">0 / 23 Uploaded</div>
+          <div class="progress-bar-shell"><div class="progress-bar-fill" id="progress-bar"></div></div>
+        </div>
+      </div>
+
+      <!-- Section 1 -->
+      <div class="section-group">
+        <div class="section-head">
+          1. Financial Information &amp; Existing Operations
+          <span id="sec-1-counter">0 / 5</span>
+        </div>
+        <ul class="doc-list" id="sec-1-list">
+          <!-- loaded by JS -->
+        </ul>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="section-group">
+        <div class="section-head">
+          2. Property, Title &amp; Legal
+          <span id="sec-2-counter">0 / 5</span>
+        </div>
+        <ul class="doc-list" id="sec-2-list">
+          <!-- loaded by JS -->
+        </ul>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="section-group">
+        <div class="section-head">
+          3. Building &amp; Engineering
+          <span id="sec-3-counter">0 / 5</span>
+        </div>
+        <ul class="doc-list" id="sec-3-list">
+          <!-- loaded by JS -->
+        </ul>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="section-group">
+        <div class="section-head">
+          4. Zoning, Entitlements &amp; Parking
+          <span id="sec-4-counter">0 / 4</span>
+        </div>
+        <ul class="doc-list" id="sec-4-list">
+          <!-- loaded by JS -->
+        </ul>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="section-group">
+        <div class="section-head">
+          5. Design &amp; Historical Documentation
+          <span id="sec-5-counter">0 / 4</span>
+        </div>
+        <ul class="doc-list" id="sec-5-list">
+          <!-- loaded by JS -->
+        </ul>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <div class="side-card">
+        <h3>Asset Profile</h3>
+        <ul class="spec-list">
+          <li>Style: <b>Downtown Row Retail</b></li>
+          <li>Model: <b>Comm/Ind</b></li>
+          <li>Zoning: <b>RO (Res-Office)</b></li>
+          <li>Year Built: <b>1941</b></li>
+          <li>Stories: <b>2</b></li>
+          <li>Owner: <b>Lewis Real Estate Services LLC</b></li>
+          <li>Last Sale Price: <b>$5,796,000 (05/25/2023)</b></li>
+          <li>Current Appraised: <b>$4,120,300</b></li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h3>Request Full Access</h3>
+        <p>Submit your details to request direct API integrations, financial model spreadsheet downloads, and direct coordinator calls.</p>
+        <form id="access-form" onsubmit="handleAccessRequest(event)">
+          <input type="text" id="req-name" class="sidebar-input" placeholder="Full name" required>
+          <input type="email" id="req-email" class="sidebar-input" placeholder="Email address" required>
+          <input type="text" id="req-company" class="sidebar-input" placeholder="Company / Entity" required>
+          <button type="submit" class="sidebar-btn">Submit Diligence Request</button>
+        </form>
+        <div id="req-success" style="display:none;color:#10B981;font-size:12.5px;margin-top:10px;text-align:center">
+          Request logged. A coordinator will verify and respond within 2 hours.
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer style="margin-top:auto">
+    <div class="wrap" style="text-align:center">
+      <p>© 2026 Harbor Point Holding &amp; KGrace CRE Consulting. All rights reserved. Access is restricted to authorized diligence parties. All uploads are encrypted and secure.</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+/* ============ DOCUMENT INDEX DATA ============ */
+const documentsData = [
+  { id: "1-1", sec: 1, name: "Current Rent Roll (names, suites, sqft, rates, lease dates)" },
+  { id: "1-2", sec: 1, name: "Active Commercial Leases (copies of all leases, amendments)" },
+  { id: "1-3", sec: 1, name: "Two Years of Operating Statements (CAM, utilities, capex)" },
+  { id: "1-4", sec: 1, name: "Most Recent Real Estate Tax Bill & Assessment" },
+  { id: "1-5", sec: 1, name: "Records of Tenant Delinquencies, Disputes, or Evictions" },
+  
+  { id: "2-1", sec: 2, name: "Current Deed & Legal Description" },
+  { id: "2-2", sec: 2, name: "Parcel Identification Information" },
+  { id: "2-3", sec: 2, name: "Current ALTA/NSPS Survey" },
+  { id: "2-4", sec: 2, name: "Current Title Report (liens, encumbrances, restrictions)" },
+  { id: "2-5", sec: 2, name: "Copies of Easements and Shared Access Agreements" },
+  
+  { id: "3-1", sec: 3, name: "Structural Reports & Rooftop Load Assessments" },
+  { id: "3-2", sec: 3, name: "Mechanical, Electrical, and Plumbing (MEP) Info" },
+  { id: "3-3", sec: 3, name: "Roof & Facade Inspection Reports" },
+  { id: "3-4", sec: 3, name: "ADA, Fire/Life Safety, and Code Compliance Docs" },
+  { id: "3-5", sec: 3, name: "Environmental Reports (Phase I ESA, asbestos, lead testing)" },
+  
+  { id: "4-1", sec: 4, name: "Current Zoning Confirmation Documents" },
+  { id: "4-2", sec: 4, name: "Planning or Pre-Application Meeting Notes" },
+  { id: "4-3", sec: 4, name: "Parking Count & Shared Parking Agreements" },
+  { id: "4-4", sec: 4, name: "Available Utility Capacity Information" },
+  
+  { id: "5-1", sec: 5, name: "As-built Drawings, CAD Files, and Floor Plans" },
+  { id: "5-2", sec: 5, name: "Building Permits, Renovation History, & COs" },
+  { id: "5-3", sec: 5, name: "Historical Hospitality or Short-Term Operating Info" }
+];
+
+const uploadState = {}; // maps docId to boolean (true = uploaded)
+
+/* ============ SECURITY GATE CHECK ============ */
+function verifyPasscode() {
+  const code = document.getElementById("passcode-input").value.trim().toUpperCase();
+  const err = document.getElementById("lock-err-msg");
+  if (code === "1000-FARMINGTON" || code === "DEMO") {
+    document.getElementById("lock-gate").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+    renderChecklist();
+  } else {
+    err.style.display = "block";
+  }
+}
+
+document.getElementById("passcode-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") verifyPasscode();
+});
+
+/* ============ CHECKLIST RENDER ============ */
+function renderChecklist() {
+  // Clear lists
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById(`sec-${i}-list`).innerHTML = "";
+  }
+
+  // Populate lists
+  documentsData.forEach(doc => {
+    const list = document.getElementById(`sec-${doc.sec}-list`);
+    const li = document.createElement("li");
+    li.className = "doc-item";
+    
+    const isUploaded = uploadState[doc.id];
+    
+    li.innerHTML = `
+      <div class="doc-info">
+        <span class="doc-icon">${isUploaded ? "📄" : "⭕"}</span>
+        <span class="doc-name" style="${isUploaded ? 'text-decoration: line-through; opacity: 0.6;' : ''}">${doc.name}</span>
+      </div>
+      <div class="doc-status">
+        <span class="status-badge ${isUploaded ? 'status-received' : 'status-pending'}">
+          ${isUploaded ? 'Received' : 'Pending'}
+        </span>
+        ${isUploaded ? '' : `<button class="upload-btn" onclick="triggerUpload('${doc.id}')">Upload File</button>`}
+      </div>
+    `;
+    list.appendChild(li);
+  });
+
+  updateProgress();
+}
+
+/* ============ MOCK UPLOAD ACTION ============ */
+function triggerUpload(docId) {
+  const doc = documentsData.find(d => d.id === docId);
+  const input = document.createElement("input");
+  input.type = "file";
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      uploadState[docId] = true;
+      renderChecklist();
+    }
+  };
+  input.click();
+}
+
+/* ============ STATE TRACKING ============ */
+function updateProgress() {
+  const total = documentsData.length;
+  const uploaded = Object.keys(uploadState).filter(k => uploadState[k]).length;
+  const pct = total > 0 ? Math.round((uploaded / total) * 100) : 0;
+  
+  document.getElementById("progress-text").textContent = `${uploaded} / ${total} Uploaded (${pct}%)`;
+  document.getElementById("progress-bar").style.width = `${pct}%`;
+
+  // Update sections counters
+  for (let i = 1; i <= 5; i++) {
+    const secTotal = documentsData.filter(d => d.sec === i).length;
+    const secUploaded = documentsData.filter(d => d.sec === i && uploadState[d.id]).length;
+    document.getElementById(`sec-${i}-counter`).textContent = `${secUploaded} / ${secTotal}`;
+  }
+}
+
+/* ============ HUBSPOT ACCESS INTEGRATION ============ */
+async function handleAccessRequest(e) {
+  e.preventDefault();
+  const name = document.getElementById("req-name").value.trim();
+  const email = document.getElementById("req-email").value.trim();
+  const company = document.getElementById("req-company").value.trim();
+  
+  try {
+    await fetch("https://api.hsforms.com/submissions/v3/integration/submit/YOUR_PORTAL_ID/YOUR_FORM_GUID", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fields: [
+          { name: "firstname", value: name },
+          { name: "email", value: email },
+          { name: "company", value: company },
+          { name: "lead_source_page", value: "harborpoint-deal-1000farmington" }
+        ],
+        context: { pageUri: location.href, pageName: "Confidential VDR — 1000 Farmington Ave" }
+      })
+    });
+  } catch (err) {
+    console.warn("HubSpot submit pending configuration:", err);
+  }
+
+  document.getElementById("access-form").reset();
+  document.getElementById("req-success").style.display = "block";
+  setTimeout(() => {
+    document.getElementById("req-success").style.display = "none";
+  }, 5000);
+}
+</script>
+
+</body>
+</html>

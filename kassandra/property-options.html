@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare Property Options | Kassandra Gonzales, REALTOR® — Harbor Point Holding</title>
+<meta name="description" content="Before you sell your Connecticut home or commercial asset, compare all options. Traditional listing vs. as-is cash offers vs. portfolio repositioning.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ HARBOR POINT HOLDING — DESIGN TOKENS ============ */
+:root{
+  --ink:#0B1E24; --deep:#12303A; --brass:#C4913C; --brass-hi:#E0B266;
+  --fog:#E9EFEA; --tide:#6FA3A8; --line:rgba(196,145,60,.3);
+  --hair:rgba(111,163,168,.18); --maxw:1140px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--fog);font-family:'Public Sans',sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Marcellus',serif;font-weight:400;line-height:1.15;letter-spacing:.01em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--tide);font-weight:600}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+.chart{position:relative}
+.chart::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 79px, var(--hair) 79px 80px),
+    repeating-linear-gradient(90deg, transparent 0 79px, var(--hair) 79px 80px);
+  mask-image:radial-gradient(120% 90% at 70% 10%, #000 30%, transparent 75%);
+}
+
+/* ============ NAV ============ */
+nav{position:sticky;top:0;z-index:60;background:rgba(11,30,36,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.nav-inner{display:flex;align-items:center;gap:32px;padding:14px 24px;max-width:var(--maxw);margin:0 auto}
+.logo{display:flex;flex-direction:column;gap:2px}
+.logo b{font-family:'Marcellus',serif;font-weight:400;font-size:17px;letter-spacing:.04em}
+.logo b span{color:var(--brass)}
+.logo small{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--tide);font-weight:600}
+.nav-links{display:flex;gap:26px;font-size:13px;font-weight:500;margin-left:auto}
+.nav-links a{color:var(--fog);opacity:.85}
+.nav-links a:hover{opacity:1;color:var(--brass-hi)}
+.nav-cta{background:var(--brass);color:var(--ink);padding:9px 18px;border-radius:3px;font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;transition:background .2s}
+.nav-cta:hover{background:var(--brass-hi)}
+@media(max-width:880px){.nav-links{display:none}.nav-cta{margin-left:auto}}
+
+/* ============ HERO ============ */
+.hero{padding:80px 0 60px;text-align:center;overflow:hidden}
+.hero h1{font-size:clamp(36px,4.5vw,52px);margin:20px auto 22px;max-width:24ch}
+.hero p{font-size:17px;color:var(--tide);max-width:60ch;margin:0 auto 34px}
+.hero-btns{display:flex;justify-content:center;gap:16px}
+.btn{display:inline-block;background:var(--brass);color:var(--ink);font-weight:700;padding:14px 28px;border-radius:3px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;transition:background .2s}
+.btn:hover{background:var(--brass-hi)}
+.btn-sec{background:transparent;border:1px solid var(--brass);color:var(--brass-hi)}
+.btn-sec:hover{background:var(--brass);color:var(--ink)}
+
+/* ============ COMPARE TABLE ============ */
+section{padding:60px 0 80px}
+.table-wrap{overflow-x:auto;margin-top:40px;border:1px solid var(--hair);border-radius:6px;background:var(--deep)}
+table{width:100%;border-collapse:collapse;text-align:left;font-size:14.5px}
+th,td{padding:18px 20px;border-bottom:1px solid var(--hair)}
+th{background:rgba(233,239,234,.03);font-family:'Marcellus',serif;font-weight:400;font-size:16px;color:var(--brass);letter-spacing:.05em}
+tr:last-child td{border-bottom:none}
+td b{color:var(--fog)}
+td span{color:var(--tide);font-size:13px;display:block;margin-top:4px}
+.highlight{color:var(--brass)}
+
+/* ============ COMPLIANCE BANNER ============ */
+.compliance-banner{background:rgba(233,239,234,.03);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0;text-align:center;font-size:12px;color:var(--tide)}
+.compliance-banner-content{max-width:800px;margin:0 auto;padding:0 20px}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:52px 0 36px;font-size:13.5px;color:var(--tide)}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:34px}
+.foot-grid h4{color:var(--fog);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;font-family:'Public Sans',sans-serif;font-weight:700}
+.foot-grid a{display:block;margin-bottom:9px}
+.foot-grid a:hover{color:var(--brass-hi)}
+.fineprint{border-top:1px solid var(--hair);padding-top:20px;font-size:11.5px;line-height:1.7}
+.fineprint a{color:inherit;text-decoration:underline}
+@media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <b>KASSANDRA GONZALES <span>REALTOR®</span></b>
+      <small>Property Strategy powered by KassConnect</small>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="sell-my-house-west-hartford.html">West Hartford</a>
+      <a href="property-options.html" style="color:var(--brass)">Property Options</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a class="nav-cta" href="contact.html">Get My Options</a>
+  </div>
+</nav>
+
+<header class="hero chart">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom: 20px;">Advisory Blueprint</div>
+    <h1>Before You Sell, Compare Your Options.</h1>
+    <p>Every Connecticut property is unique. Discover which selling structure aligns with your equity goals, timeline, and preferred level of preparation.</p>
+    <div class="hero-btns">
+      <a class="btn" href="contact.html">Request Options Review</a>
+      <a class="btn btn-sec" href="tel:8609183030">Call 860.918.3030</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:30px">
+      <span class="eyebrow">Option Matrix</span>
+      <h2>A side-by-side comparison of Connecticut selling paths.</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Path</th>
+            <th>Best For</th>
+            <th>Prep Required</th>
+            <th>Fee Structure</th>
+            <th>Typical Speed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Traditional Listing</b><span>Max market exposure</span></td>
+            <td>Turnkey properties or sellers aiming for full retail value.</td>
+            <td>Painting, staging, inspection repairs, and open houses.</td>
+            <td>Standard brokerage commissions.</td>
+            <td>45–90 days to close.</td>
+          </tr>
+          <tr>
+            <td><b>As-Is Strategy</b><span>Convenience &amp; speed</span></td>
+            <td>Properties needing heavy cosmetic or structural updates.</td>
+            <td>None. Skip clean-outs and repairs.</td>
+            <td>Direct deal or referral network options.</td>
+            <td>14–30 days to close.</td>
+          </tr>
+          <tr>
+            <td><b>Multifamily Disposition</b><span>Tenant-occupied assets</span></td>
+            <td>Duplexes, triplexes, or small portfolios.</td>
+            <td>Rent roll verification and tenant compliance audits.</td>
+            <td>Custom commercial advisory rates.</td>
+            <td>30–60 days to close.</td>
+          </tr>
+          <tr>
+            <td><b>Commercial Advisory</b><span>Retail, office, redevelopment</span></td>
+            <td>Mixed-use, retail block, land, or stalled projects.</td>
+            <td>As-built assembly, zoning check, site planning.</td>
+            <td>Principal alignment under Harbor Point.</td>
+            <td>Structured deal-by-deal.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="compliance-banner">
+  <div class="compliance-banner-content">
+    <p>Kassandra Gonzales is a licensed real estate salesperson in the state of Connecticut associated with Keller Williams Realty / KW Legacy Partners. All consumer residential brokerage transactions are conducted through KW Legacy Partners, independently owned and operated. Kassandra's commercial real estate, data room services, and property advisory operations are facilitated under Harbor Point Holding.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="index.html">
+          <b style="font-family:'Marcellus',serif">KASSANDRA GONZALES <span style="color:var(--brass)">REALTOR®</span></b>
+        </a>
+        <p style="margin-top:12px;max-width:32ch">Connecticut property strategy for homeowners, landlords, and commercial investors. Every property finds its harbor.</p>
+      </div>
+      <div>
+        <h4>Options</h4>
+        <a href="property-options.html">Property Options Review</a>
+        <a href="sell-my-house-west-hartford.html">West Hartford Sellers</a>
+        <a href="home-value-west-hartford.html">Home Value Lookup</a>
+      </div>
+      <div>
+        <h4>Lanes</h4>
+        <a href="sell-house-as-is-connecticut.html">As-Is Sale</a>
+        <a href="inherited-property-connecticut.html">Inherited Property</a>
+        <a href="sell-multifamily-property-connecticut.html">Multifamily Dispositions</a>
+        <a href="sell-commercial-property-connecticut.html">Commercial &amp; Land</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:8609183030">Direct: 860.918.3030</a>
+        <a href="tel:8603130700">Office: 860.313.0700</a>
+        <a href="mailto:kassg@kw.com">kassg@kw.com</a>
+        <a href="https://kassg.kw.com" target="_blank" rel="noopener">kassg.kw.com</a>
+      </div>
+    </div>
+    <div class="fineprint">
+      <p><strong>REALTOR® Compliance &amp; Brokerage Disclosures:</strong><br>
+      Kassandra Gonzales, licensed salesperson with Keller Williams Realty / KW Legacy Partners. Address: 29 S Main St Suite B, West Hartford, CT 06107. Office Phone: 860.313.0700. Each office is independently owned and operated. Licensed in the State of Connecticut.<br>
+      <strong>Professional Services Disclaimer:</strong><br>
+      Kassandra Gonzales and Harbor Point Holding provide real estate advisory, consulting, and brokerage-related services. Architectural, engineering, legal, tax, financial, lending, insurance, construction, permitting, and appraisal advice must be obtained from properly licensed professionals.<br>
+      Not affiliated with the Harbor Point development in Stamford, CT. <a href="../privacy.html">Privacy Policy</a> · <a href="../terms.html">Terms of Use</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

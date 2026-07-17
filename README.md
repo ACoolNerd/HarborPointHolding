@@ -41,6 +41,18 @@ Static HTML. No build step. No CMS. No dependencies to break.
 ├── hp-commercial.html        # Lane E  — CRE dispositions, principal-to-principal
 ├── hp-advisory.html          # Lane SE — Redevelopment, zoning, permitting
 ├── hp-landlord.html          # Lane S  — Tired-landlord dual path (fix or exit)
+├── kassandra/    # Kassandra Gonzales Agent Site (KW Compliant Rebrand)
+│   ├── index.html                           # Agent strategy hub
+│   ├── sell-my-house-west-hartford.html      # Local West Hartford strategy page
+│   ├── home-value-west-hartford.html         # local West Hartford valuation page
+│   ├── sell-house-as-is-connecticut.html     # Connecticut as-is selling page
+│   ├── inherited-property-connecticut.html    # Estate/probate strategy page
+│   ├── sell-multifamily-property-connecticut.html # Duplex/triplex/portfolio page
+│   ├── sell-commercial-property-connecticut.html  # Retail/office/mixed-use page
+│   ├── property-options.html                 # Strategy/matrix comparison page
+│   ├── contact.html                         # Intake form contact landing page
+│   └── deals/
+│       └── 1000-farmington-avenue.html      # Confidential Deal Room (VDR) & due diligence checklist
 ├── docs/
 │   ├── harborpoint-system-blueprint.html   # Tech/marketing/CRM architecture
 │   └── harborpoint-launch-cost.png         # Year-one cost card
@@ -68,6 +80,16 @@ Static HTML. No build step. No CMS. No dependencies to break.
 | Commercial | `harborpoint-commercial` |
 | Advisory | `harborpoint-advisory` |
 | Landlord | `harborpoint-landlord` |
+| Kassandra Hub | `harborpoint-kassandra-hub` |
+| Kassandra West Hartford Sell | `harborpoint-kassandra-sell-westhartford` |
+| Kassandra West Hartford Value | `harborpoint-kassandra-value-westhartford` |
+| Kassandra As-Is Sell | `harborpoint-kassandra-asis` |
+| Kassandra Inherited | `harborpoint-kassandra-inherited` |
+| Kassandra Multifamily | `harborpoint-kassandra-multifamily` |
+| Kassandra Commercial | `harborpoint-kassandra-commercial` |
+| Kassandra Options | `harborpoint-kassandra-options` |
+| Kassandra Contact | `harborpoint-kassandra-contact` |
+| 1000 Farmington Ave Deal Room | `harborpoint-deal-1000farmington` |
 
 Every intake submission carries its tag into HubSpot (`lead_source_page`), so every marketing dollar is attributable per lane.
 
