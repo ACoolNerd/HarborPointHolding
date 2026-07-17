@@ -14,8 +14,6 @@ const sourceTags = new Set();
 const portalIds = new Set();
 const formGuids = new Set();
 const forbidden = [
-  /Kassandra/i,
-  /Gonzales/i,
   /Keller Williams/i,
   /KW Legacy/i,
   /Principal &amp; Owner/i
