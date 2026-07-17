@@ -44,18 +44,8 @@ Static HTML. No build step. No CMS. No dependencies to break.
 ├── docs/
 │   ├── harborpoint-system-blueprint.html   # Tech/marketing/CRM architecture
 │   └── harborpoint-launch-cost.png         # Year-one cost card
-├── privacy.html              # Privacy policy (required for ads platforms)
-├── terms.html                # Terms of use
-├── 404.html                  # Off-the-chart page
-├── favicon.svg               # Compass mark
-├── robots.txt / sitemap.xml  # SEO baseline
-├── 00_HARBORPOINT_MASTER.md  # Master prompt — system brain
-├── scripts/
-│   └── CRE-OUTREACH-SCRIPTS.md             # Commercial lane outreach library
-└── setup/
-    ├── SETUP-GUIDE.md / GO-LIVE-WIRING.md  # Launch playbooks
-    ├── wire-config.sh                      # One-command HubSpot/Calendly injection
-    └── hubspot-properties.csv
+└── scripts/
+    └── CRE-OUTREACH-SCRIPTS.md             # Commercial lane outreach library
 ```
 
 ### Source Tags (attribution backbone)
