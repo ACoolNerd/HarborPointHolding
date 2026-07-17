@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Facing Foreclosure in Connecticut? | Harbor Point Holding — Confidential Options Before the Auction</title>
-<meta name="description" content="Behind on your mortgage in Connecticut? Harbor Point Holding offers confidential, judgment-free options before foreclosure — protect your equity and restart on your terms.">
+<meta name="description" content="Behind on your mortgage in Connecticut? Harbor Point Holding provides a confidential intake and routes appropriate homeowner-support and professional-referral options. No outcome is guaranteed.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,10 +145,11 @@ footer{border-top:1px solid var(--line);padding:52px 0 36px;font-size:14px;color
 ================================================================= -->
 <script>
 const HP_CONFIG = {
+  ROUTING_LANE: "harborpoint_market",
   SOURCE_TAG: "harborpoint-lifeline",
-  HUBSPOT_PORTAL_ID: "YOUR_PORTAL_ID",
-  HUBSPOT_FORM_GUID: "YOUR_FORM_GUID",
-  CALENDLY_URL: "https://calendly.com/YOUR_LINK/consultation",
+  HUBSPOT_PORTAL_ID: "246783676",
+  HUBSPOT_FORM_GUID: "d1cdad5d-38ed-4901-bc61-9cdfac0d1721",
+  CALENDLY_URL: "",
   NOTIFY_LABEL: "Harbor Point — Lifeline"
 };
 </script>
@@ -258,7 +259,7 @@ const HP_CONFIG = {
     </div>
     <div>
       <blockquote>"A harbor isn't where the journey ends. It's where the next one begins."</blockquote>
-      <div class="founder"><b>Principal &amp; Owner</b><span>Harbor Point Holding</span></div>
+      <div class="founder"><b>Connecticut Market Desk</b><span>Harbor Point Holding</span></div>
     </div>
   </div>
 </section>
@@ -384,10 +385,10 @@ function renderStep(){
 function next(){ stepIndex++; renderStep(); }
 
 async function finish(){
-  bar.style.width='100%'; label.textContent='Complete';
+  bar.style.width='92%'; label.textContent='Sending…';
   addMsg('Charting your course…','bot');
   try{
-    await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${HP_CONFIG.HUBSPOT_PORTAL_ID}/${HP_CONFIG.HUBSPOT_FORM_GUID}`,{
+    const response = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${HP_CONFIG.HUBSPOT_PORTAL_ID}/${HP_CONFIG.HUBSPOT_FORM_GUID}`,{
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
         fields:[
@@ -403,13 +404,20 @@ async function finish(){
         context:{ pageUri: location.href, pageName: HP_CONFIG.NOTIFY_LABEL }
       })
     });
-  }catch(err){ console.warn('HubSpot submit pending config:', err); }
+    if(!response.ok) throw new Error(`HubSpot submission failed with status ${response.status}`);
+    bar.style.width='100%'; label.textContent='Complete';
+  }catch(err){
+    console.warn('HubSpot submission failed:', err);
+    label.textContent='Not sent';
+    body.innerHTML = `<div class="q-done"><h3>We couldn't send this yet.</h3><p>Your information was not confirmed as received. Please try again.</p><button class="q-send" onclick="location.reload()">Try Again</button></div>`;
+    return;
+  }
   setTimeout(()=>{
     body.innerHTML = `
       <div class="q-done">
-        <h3>Received. A private response is coming within 24 hours.</h3>
+        <h3>Received. Your confidential inquiry is in the review queue.</h3>
         <p>If you'd rather talk it through now, book a private call directly — no pressure, no obligation, no judgment.</p>
-        <a class="q-cal" href="${HP_CONFIG.CALENDLY_URL}?utm_source=${encodeURIComponent(answers.source)}" target="_blank" rel="noopener">Book Direct</a>
+        ${HP_CONFIG.CALENDLY_URL ? `<a class="q-cal" href="${HP_CONFIG.CALENDLY_URL}?utm_source=${encodeURIComponent(answers.source)}" target="_blank" rel="noopener">Book a Consultation</a>` : ``}
       </div>`;
   },900);
 }
