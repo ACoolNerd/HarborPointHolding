@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 00_HARBORPOINT_MASTER.md
 ## Master Prompt — Harbor Point Holding Build System
 *Paste this at the start of any AI session (Claude, Claude Code, ChatGPT, Gemini, Copilot) before requesting work on this project. It is the single source of truth. Version 1.0 · July 2026.*
@@ -99,3 +100,6 @@ const HP_CONFIG = {
 **Definition of done:** copy-paste deployable, brand-exact, source-tagged, compliant with §5, and pushed-ready for `git add -A && git commit && git push` → Vercel auto-deploy.
 
 *0 → ∞*
+=======
+
+>>>>>>> c7a7233ceef0592922556d7e54fbed58be6839d8

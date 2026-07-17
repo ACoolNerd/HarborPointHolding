@@ -1,6 +1,0 @@
-Name,Internal name,Group name,Type,Field type,Options,Description
-Lead Source Page,lead_source_page,contactinformation,string,text,,Which lane landing page converted this contact
-Property Type,property_type,contactinformation,string,text,,Asset type captured by the intake quiz
-Goal,goal,contactinformation,string,text,,Situation or motivation from the intake quiz
-Timeline,timeline,contactinformation,string,text,,Urgency band from the intake quiz
-Deal Lane,deal_lane,contactinformation,enumeration,select,Sell Fast;Lifeline;Commercial;Advisory;Landlord,Which of the five service lanes this lead belongs to
