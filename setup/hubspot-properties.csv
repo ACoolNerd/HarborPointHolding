@@ -1,6 +1,16 @@
 Name,Internal name,Group name,Type,Field type,Options,Description
-Lead Source Page,lead_source_page,contactinformation,string,text,,Which lane landing page converted this contact
-Property Type,property_type,contactinformation,string,text,,Asset type captured by the intake quiz
-Goal,goal,contactinformation,string,text,,Situation or motivation from the intake quiz
-Timeline,timeline,contactinformation,string,text,,Urgency band from the intake quiz
-Deal Lane,deal_lane,contactinformation,enumeration,select,Sell Fast;Lifeline;Commercial;Advisory;Landlord,Which of the five service lanes this lead belongs to
+Lead Source Page,lead_source_page,contactinformation,string,text,,Which landing page converted the contact
+Property Type,property_type,contactinformation,string,text,,Asset type captured by intake
+Goal,goal,contactinformation,string,text,,Situation or desired outcome
+Timeline,timeline,contactinformation,string,text,,Urgency or planning horizon
+Deal Lane,deal_lane,contactinformation,enumeration,select,Sell Fast;Lifeline;Commercial;Advisory;Landlord,Service lane inferred from intake
+Routing Lane,routing_lane,contactinformation,enumeration,select,Harbor Point Market;Harbor Point Commercial;Professional Referral;KW Practice;Hold for Review;Do Not Contact,Governed downstream routing destination
+Routing Status,routing_status,contactinformation,enumeration,select,Unreviewed;Pending Consent;Pending Approval;Approved;Referred;Rejected,Current routing review state
+Routing Reason,routing_reason,contactinformation,string,text,,Evidence-based reason for the routing decision
+Routing Approved,routing_approved,contactinformation,bool,booleancheckbox,,Human approval recorded before external handoff
+Referral Consent,referral_consent,contactinformation,bool,booleancheckbox,,Whether the lead consented to a referral
+Referral Consent At,referral_consent_at,contactinformation,datetime,date,,Timestamp of referral consent
+Do Not Contact,do_not_contact,contactinformation,bool,booleancheckbox,,Suppression flag that overrides outreach
+Source URL,source_url,contactinformation,string,text,,Primary evidence or campaign source
+Source Retrieved At,source_retrieved_at,contactinformation,datetime,date,,When the underlying source was retrieved
+Verification Status,verification_status,contactinformation,enumeration,select,Verified;Official Unconfirmed;Licensed Source;Inferred;Stale;Conflicting;Not Verified,Evidence confidence state

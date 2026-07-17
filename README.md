@@ -3,13 +3,13 @@
 **Connecticut Real Estate — Acquisition & Advisory**
 *Every Property Finds Its Harbor.*
 
-Live domain: [harborpointholding.com](https://harborpointholding.com) · Registered 7/17/2026 · Owner: Kassandra Gonzales
+Live domain: [harborpointholding.com](https://harborpointholding.com) · Registered 7/17/2026 · Operating model: neutral Connecticut property market and intelligence platform
 
 ---
 
 ## What This Is
 
-A complete lead-generation and conversion system for a Connecticut omni-channel real estate operation: one hub site plus five lane-specific landing pages, each with a conversational intake that qualifies leads, tags the source, submits to HubSpot, and routes to direct Calendly booking.
+A lead-generation and property-intelligence system for the Connecticut market: one hub site plus five lane-specific landing pages. Harbor Point remains person-neutral. Qualified matters may be routed to acquisition, commercial, professional-referral, or separately governed licensed-practice lanes after review and consent.
 
 Static HTML. No build step. No CMS. No dependencies to break.
 
@@ -108,6 +108,8 @@ const HP_CONFIG = {
 3. **No-Booking Nudge** — +1hr / +2d / +5d Calendly follow-ups, stop on booking or reply
 4. **Stale Lead Sweep** — 14 days inactive → task on dashboard
 
+> Subscription rule: full HubSpot workflows require a qualifying Professional or Enterprise subscription. On Free, use form notifications and supported simple form automations; create Deals and routing tasks through the approved backend.
+
 ---
 
 ## Deployment
@@ -143,8 +145,9 @@ Conversational intake (5 steps, ~60 sec)
         ↓
 HubSpot Forms API submission
    ├── Contact created / updated
-   ├── Pipeline entry (New Lead)
-   └── Instant alert → Kassandra
+   ├── Deal created only by the approved backend or supported automation
+   ├── Default routing lane: harborpoint_market
+   └── Instant alert → Harbor Point lead queue
         ↓
 Calendly "Book Direct" (utm_source attached)
         ↓
@@ -169,7 +172,8 @@ No booking? → automated nudge sequence
 
 ## Compliance Notes
 
-- **Lifeline lane:** Connecticut regulates foreclosure-related consulting and outreach. All Lifeline mail/scripts must be attorney-reviewed before deployment. The page copy intentionally leads with homeowner options and referral to counselors/attorneys.
+- **Lifeline lane:** Connecticut regulates foreclosure-related consulting and outreach. All Lifeline mail/scripts require attorney review before deployment. The page copy must lead with homeowner options and referral to qualified counselors or attorneys.
+- **Separate licensed-practice lane:** no individual or brokerage is presented as Harbor Point's owner or operator. A lead may enter a separately governed licensed real-estate practice lane only after consent, eligibility review, required disclosures, and human approval.
 - No legal, tax, or investment advice is given anywhere in the system.
 - Not affiliated with the Harbor Point development in Stamford, CT (disclaimed in site footer).
 
@@ -181,7 +185,7 @@ No booking? → automated nudge sequence
 - [x] 6-page site built
 - [x] System blueprint + launch cost card
 - [x] CRE outreach script library
-- [ ] HubSpot portal ID / form GUID wired
+- [x] HubSpot portal ID / form GUID wired in the public form configuration
 - [ ] Calendly event live
 - [ ] DNS pointed / site deployed
 - [ ] First campaign launched

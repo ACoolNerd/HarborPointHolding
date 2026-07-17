@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tired Landlord? Sell or Reposition Your Connecticut Rental | Harbor Point Holding</title>
-<meta name="description" content="Tired of tenants, vacancy, or 3 AM calls? Harbor Point Holding buys Connecticut rental properties tenant-in-place, or builds your lease-up and repositioning plan.">
+<meta name="description" content="Review Connecticut landlord options for vacancy, tenant, maintenance, lease-up, management, professional referral, or potential disposition needs.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,10 +145,11 @@ footer{border-top:1px solid var(--line);padding:52px 0 36px;font-size:14px;color
 ================================================================= -->
 <script>
 const HP_CONFIG = {
+  ROUTING_LANE: "harborpoint_market",
   SOURCE_TAG: "harborpoint-landlord",
-  HUBSPOT_PORTAL_ID: "YOUR_PORTAL_ID",
-  HUBSPOT_FORM_GUID: "YOUR_FORM_GUID",
-  CALENDLY_URL: "https://calendly.com/YOUR_LINK/consultation",
+  HUBSPOT_PORTAL_ID: "246783676",
+  HUBSPOT_FORM_GUID: "d1cdad5d-38ed-4901-bc61-9cdfac0d1721",
+  CALENDLY_URL: "",
   NOTIFY_LABEL: "Harbor Point — Landlord"
 };
 </script>
@@ -179,7 +180,7 @@ const HP_CONFIG = {
       <div class="coords"><i></i>LANE S — LANDLORD</div>
       <span class="eyebrow">Landlord & Portfolio Strategy</span>
       <h1>Love the Asset. <em>Or Leave It Well.</em></h1>
-      <p class="lede">Vacancy, problem tenants, deferred maintenance, 3 AM calls — whether you want out or want it working again, we build the plan. And if the answer is sell, we buy tenant-in-place, as-is, on your timeline.</p>
+      <p class="lede">Vacancy, difficult tenant situations, deferred maintenance, and management pressure can require different paths. Harbor Point organizes the facts and routes the matter toward the appropriate operational, professional-referral, or potential disposition conversation.</p>
       <div class="stats">
         <div class="stat"><b>As-Is</b><span>Tenants In Place OK</span></div>
         <div class="stat"><b>24hr</b><span>Portfolio Review</span></div>
@@ -214,7 +215,7 @@ const HP_CONFIG = {
       <div class="step">
         <span class="bearing">MARK II</span>
         <h3>Tenant-In-Place Purchase</h3>
-        <p>Leases, section 8, month-to-month, even non-paying tenants — we buy as-is and take on the situation.</p>
+        <p>Leases, assisted housing, month-to-month arrangements, and nonpayment situations require property-specific review and, where appropriate, qualified legal or property-management support.</p>
       </div>
       <div class="step">
         <span class="bearing">MARK III</span>
@@ -258,7 +259,7 @@ const HP_CONFIG = {
     </div>
     <div>
       <blockquote>"A harbor isn't where the journey ends. It's where the next one begins."</blockquote>
-      <div class="founder"><b>Principal &amp; Owner</b><span>Harbor Point Holding</span></div>
+      <div class="founder"><b>Connecticut Market Desk</b><span>Harbor Point Holding</span></div>
     </div>
   </div>
 </section>
@@ -384,10 +385,10 @@ function renderStep(){
 function next(){ stepIndex++; renderStep(); }
 
 async function finish(){
-  bar.style.width='100%'; label.textContent='Complete';
+  bar.style.width='92%'; label.textContent='Sending…';
   addMsg('Charting your course…','bot');
   try{
-    await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${HP_CONFIG.HUBSPOT_PORTAL_ID}/${HP_CONFIG.HUBSPOT_FORM_GUID}`,{
+    const response = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${HP_CONFIG.HUBSPOT_PORTAL_ID}/${HP_CONFIG.HUBSPOT_FORM_GUID}`,{
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
         fields:[
@@ -403,13 +404,20 @@ async function finish(){
         context:{ pageUri: location.href, pageName: HP_CONFIG.NOTIFY_LABEL }
       })
     });
-  }catch(err){ console.warn('HubSpot submit pending config:', err); }
+    if(!response.ok) throw new Error(`HubSpot submission failed with status ${response.status}`);
+    bar.style.width='100%'; label.textContent='Complete';
+  }catch(err){
+    console.warn('HubSpot submission failed:', err);
+    label.textContent='Not sent';
+    body.innerHTML = `<div class="q-done"><h3>We couldn't send this yet.</h3><p>Your information was not confirmed as received. Please try again.</p><button class="q-send" onclick="location.reload()">Try Again</button></div>`;
+    return;
+  }
   setTimeout(()=>{
     body.innerHTML = `
       <div class="q-done">
-        <h3>Received. Your portfolio review lands within 24 hours.</h3>
-        <p>Rather talk it through? Book directly — principal to principal, no pitch decks.</p>
-        <a class="q-cal" href="${HP_CONFIG.CALENDLY_URL}?utm_source=${encodeURIComponent(answers.source)}" target="_blank" rel="noopener">Book Direct</a>
+        <h3>Received. Your landlord inquiry is in the review queue.</h3>
+        <p>If an approved consultation link is available, you may schedule the next conversation directly.</p>
+        ${HP_CONFIG.CALENDLY_URL ? `<a class="q-cal" href="${HP_CONFIG.CALENDLY_URL}?utm_source=${encodeURIComponent(answers.source)}" target="_blank" rel="noopener">Book a Consultation</a>` : ``}
       </div>`;
   },900);
 }

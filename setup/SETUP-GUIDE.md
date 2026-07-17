@@ -63,14 +63,14 @@ In **each of the 6 HTML files**, edit the config block at the top of `<body>`:
 ```js
 HUBSPOT_PORTAL_ID: "12345678",        // your Hub ID
 HUBSPOT_FORM_GUID: "abcd1234-....",   // your Form GUID
-CALENDLY_URL: "https://calendly.com/kassandra-harborpoint/consultation",
+CALENDLY_URL: "https://calendly.com/YOUR_APPROVED_EVENT",
 ```
 
 `SOURCE_TAG` is preset per page — leave it. Commit + push → auto-deploys.
 
 ### 3e — Workflows (free tier = use form notifications; paid = full workflows)
-Free tier minimum: Forms → your form → Options → "Send notification to" → Kassandra's email. 
-If/when on Starter+: build the four workflows from README (Instant Alert, Hot Lead Flag, No-Booking Nudge, Stale Lead Sweep).
+Free tier minimum: Forms → your form → Options → "Send notification to" → the Harbor Point lead-operations email.
+Full workflows require a qualifying Professional or Enterprise subscription. Until then, use supported simple form automations plus the approved backend for Deal creation, routing, retries, and stale-lead tasks.
 
 ### 3f — Pipeline
 Settings → Objects → Deals → Pipelines → rename stages to:
@@ -109,7 +109,7 @@ Create a workspace **"Harbor Point Holding"** with this structure:
                                    offers out, next week's mail drop)
 ```
 
-Rule of thumb: **HubSpot = the machine** (automation, forms, alerts). **Notion = the cockpit** (deals, sourcing, scripts, weekly review). Don't duplicate contact records in both.
+Rule of thumb: **HubSpot = the CRM source of truth** for contacts, companies, Deals, activities, consent, and routing. **Notion = the planning cockpit** for scripts, reviews, and approved research queues. Do not duplicate contact records in both.
 
 ---
 
@@ -122,7 +122,7 @@ Rule of thumb: **HubSpot = the machine** (automation, forms, alerts). **Notion =
 - [ ] M365 trial canceled (if going Workspace)
 - [ ] HubSpot: Hub ID + Form GUID in all 6 pages
 - [ ] Custom properties + pipeline created
-- [ ] Form notification → Kassandra's email
+- [ ] Form notification → Harbor Point lead-operations email
 - [ ] Calendly link live in all 6 pages
 - [ ] One test lead per lane verified in HubSpot
 - [ ] Notion HQ built

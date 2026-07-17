@@ -1,119 +1,49 @@
-# CRE Outreach Scripts — Connecticut
-## Harbor Point Holding · Commercial Lane (`hp-commercial`)
+# Harbor Point Holding — Connecticut Property Outreach Library
 
-Tone anchor: **principal-to-principal**. Direct, asset-literate, zero broker-speak, zero pressure. Every script ends with one clear next step: the lane page or a direct call.
+Tone anchor: direct, asset-literate, calm, and evidence-based. Harbor Point is a neutral market and property-intelligence brand. Do not identify an individual owner, buyer, broker, agent, REALTOR®, brokerage, or decision-maker unless the specific association and disclosure have been approved.
 
-Merge fields: `[Name]` `[Property]` `[Town]` `[Submarket]` `[Asset Type]`
+## Approval gate
 
----
+Before use, record the source, permitted-use basis, property or entity match, do-not-contact status, channel consent where required, reviewer, and approval timestamp. Foreclosure or lis-pendens outreach requires attorney review. These scripts are drafts and must not be sent automatically.
 
-## 1 · LinkedIn — Connection Request (300 char limit)
+## 1 · Commercial owner introduction
 
-> [Name] — I acquire and reposition [Asset Type] assets across Connecticut, principal-to-principal. Noticed your position in [Town]. No pitch — just useful to be connected with owners in submarkets I'm active in.
+**Subject:** A question about [Property] in [Town]
 
-## 2 · LinkedIn — Follow-Up DM (after accept, wait 2–3 days)
+> [Name] — Harbor Point tracks Connecticut commercial property activity and [Property] surfaced in our current market review. We are trying to understand whether the ownership plan is hold, reposition, refinance, lease, or evaluate a potential disposition. If a short confidential conversation would be useful, reply with the best time. If not, we will update our record accordingly.
 
-> Appreciate the connect, [Name]. Straight question, no obligation attached: is [Property] something you'd ever consider exiting, or is it a long-term hold for you?
->
-> I ask because I buy direct — no listing period, no broker chain, as-is condition, proof of funds up front. If the timing's ever right, the conversation takes 15 minutes: harborpointholding.com/hp-commercial or just reply here.
->
-> If it's a hold — good position. I'll stay out of your inbox.
+## 2 · Multifamily or mixed-use review
 
-## 3 · Cold Email — Vacancy Angle
+**Subject:** [Property] — ownership-plan review
 
-**Subject:** [Property], [Town] — direct question
+> We are reviewing multifamily and mixed-use opportunities in [Submarket]. Public records connect [Owner Entity] with [Property], but that connection has not been treated as a title conclusion. Would you be open to a short property-options conversation, or should we mark the asset as not open to outreach?
 
-> [Name],
->
-> I track [Submarket] closely and [Property] came up in my underwriting this month. I buy Connecticut commercial assets directly — principal-to-principal, as-is, with certainty of close.
->
-> Two ways I can be useful:
->
-> 1. **If you'd sell at the right number** — I'll give you a real one within 48 hours, no listing, no retrading.
-> 2. **If you're holding** — I'll share what I'm seeing on rents and absorption in [Submarket], no strings. Owners tell me the data alone is worth the reply.
->
-> Either way: harborpointholding.com or reply with a time.
->
-> Kassandra Gonzales
-> Harbor Point Holding · Connecticut
-> [phone] · hello@harborpointholding.com
+## 3 · Landlord options
 
-## 4 · Cold Email — Estate / Partnership Angle
+> Harbor Point helps route Connecticut landlords toward appropriate property options: operational review, property-management referral, leasing support, professional advice, or a potential sale conversation with an approved party. Which path, if any, would be useful for [Property]?
 
-**Subject:** [Property] — clean exits for complicated ownership
+## 4 · Professional referral request
 
-> [Name],
->
-> Multi-party ownership, estate timelines, deferred maintenance — most buyers run from complications. I underwrite them.
->
-> Harbor Point Holding buys Connecticut commercial property directly: as-is condition, tight diligence windows, structured to clear multiple stakeholders cleanly. If [Property] has partners, heirs, or a court calendar attached to it, that's exactly the kind of purchase I do well.
->
-> 48-hour offer, no obligation: harborpointholding.com/hp-commercial
->
-> Kassandra Gonzales · Harbor Point Holding
+> We are reviewing a Connecticut property matter that may require a qualified [attorney / engineer / architect / lender / insurer / appraiser / surveyor / property manager]. May we share a limited summary for a conflict and fit check? No client or confidential information will be shared without approval.
 
-## 5 · Cold Call — Opening Framework (30 seconds)
+## 5 · Licensed-practice referral consent
 
-> "[Name]? Kassandra Gonzales — I'm a principal buyer, not a broker, so this is a 30-second call.
->
-> I acquire [Asset Type] in [Town] and your property on [Street] fits what I'm underwriting this quarter. One question: at the right number, is it something you'd consider selling — or is it a firm hold?"
+> Based on what you described, a separately governed licensed real-estate practice may be an appropriate next conversation. Harbor Point does not represent that practice as its owner or operator. Would you like us to request an introduction? Your consent is optional and does not create a representation agreement.
 
-**If "maybe / depends on the number":**
-> "Fair. I don't do lowball games — I'll walk you through my math. Fifteen minutes this week, or I can send my 48-hour written offer first so you see the number before we ever talk. Which do you prefer?"
+## 6 · No-response closeout
 
-**If "not selling":**
-> "Respect that. Last thing and I'm gone: if I send you what I'm seeing on [Submarket] rents twice a year — useful, or skip it?" *(builds the long-game list)*
+> Closing the loop on [Property]. We will mark the record as no response and stop this sequence. If you want to revisit a property-options review later, reply to this message.
 
-**If "who is this / how did you get this":**
-> "Public record — I pull ownership from town land records for every submarket I buy in. It's how principals find each other without brokers in the middle."
+## Required records
 
-## 6 · Direct Mail — Letter (LLC / Absentee Owners)
+- source URL and retrieval date;
+- entity/property match and confidence;
+- approved channel and suppression check;
+- exact script version;
+- reviewer and approval timestamp;
+- response, correction, or opt-out;
+- HubSpot Contact, Company, and Deal associations.
 
-> Dear [Name],
->
-> I'm writing to you directly because you own [Property] in [Town] — and because I'm a buyer, not a broker.
->
-> Harbor Point Holding acquires Connecticut commercial real estate principal-to-principal: as-is condition, no listing period, no commissions, and proof of funds with every offer. Vacancy, deferred maintenance, environmental flags, or partnership complications don't scare us off — we underwrite them.
->
-> If a clean, certain exit at a fair number is ever on your mind, the conversation starts one of two ways:
->
-> **Call/text:** [phone]
-> **Online (60 seconds):** harborpointholding.com/hp-commercial
->
-> And if you're holding — keep this letter. Markets turn, and my number won't change.
->
-> Kassandra Gonzales
-> Principal, Harbor Point Holding
-> Glastonbury, Connecticut
+## Prohibited claims
 
-## 7 · Voicemail (12 seconds)
-
-> "[Name], Kassandra Gonzales, Harbor Point Holding. I'm a direct buyer looking at [Asset Type] in [Town] — your property on [Street] fits. One short question when you have a minute: [phone]. Again, [phone]. Thanks."
-
-## 8 · Follow-Up Cadence
-
-| Touch | Day | Channel | Script |
-|---|---|---|---|
-| 1 | 0 | Letter or email | #3, #4, or #6 |
-| 2 | 4 | Call + voicemail | #5 / #7 |
-| 3 | 10 | Email bump | "Floating this back up — still buying in [Submarket]. 48-hour offer stands." |
-| 4 | 21 | LinkedIn | #1 → #2 |
-| 5 | 60 | Value drop | Submarket rent/absorption note, no ask |
-| 6 | Quarterly | Stay-warm | Market note + "number's unchanged" |
-
-Log every touch in HubSpot on the contact record. Lane = Commercial, source = the channel used.
-
----
-
-## Sourcing the List (Connecticut)
-
-- **Town land records** (all 169 towns — CT has no county recording): owner names, LLC grantees, lis pendens
-- **CT Secretary of State business search**: pierce LLC names to principals for mail/LinkedIn
-- **Town assessor / GIS**: absentee owners (mailing address ≠ property address), assessed values
-- **CoStar/Crexi/LoopNet**: expired listings and long-vacancy flags = motivated conversations
-
-## Compliance Guardrails
-
-- Commercial-to-commercial outreach is broadly permitted, but: honor Do-Not-Call registry for any numbers that may be personal lines; include a mail address on emails (CAN-SPAM); stop on any opt-out immediately and log it in HubSpot.
-- Never state or imply a brokerage relationship — Kassandra is buying/advising as a principal.
-- **Any script adapted for the Lifeline (foreclosure) lane must be attorney-reviewed first** — Connecticut regulates foreclosure-related solicitation separately and strictly.
+Do not claim direct-buyer authority, proof of funds, guaranteed pricing, guaranteed timing, no fees, no commissions, ownership, licensure, foreclosure rescue, zoning approval, value, title, or professional conclusions without documented proof and approved disclosures.
