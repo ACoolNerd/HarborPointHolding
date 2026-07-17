@@ -156,7 +156,7 @@ const HP_CONFIG = {
 <nav>
   <div class="nav-inner">
     <a class="logo" href="#">
-      <img src="assets/logo-landscape-dark.png" alt="Harbor Point Holding" style="height: 38px; display: block;">
+      <img src="assets/logo-landscape-dark.png" alt="Harbor Point Holding" width="180" height="38" style="height: 38px; width: auto; display: block;" fetchpriority="high">
     </a>
     <div class="nav-links">
       <a href="index.html">← All Lanes</a>
@@ -381,6 +381,21 @@ function next(){ stepIndex++; renderStep(); }
 async function finish(){
   bar.style.width='100%'; label.textContent='Complete';
   addMsg('Charting your course…','bot');
+    try{
+    await fetch('/api/intake',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        firstname: answers.name,
+        email: answers.email,
+        phone: answers.phone||'',
+        property_type: answers.property_type,
+        goal: answers.goal,
+        timeline: answers.timeline,
+        city: answers.location,
+        lead_source_page: answers.source || HP_CONFIG.SOURCE_TAG
+      })
+    });
+  }catch(err){ console.warn('Local submit pending config:', err); }
   try{
     await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${HP_CONFIG.HUBSPOT_PORTAL_ID}/${HP_CONFIG.HUBSPOT_FORM_GUID}`,{
       method:'POST', headers:{'Content-Type':'application/json'},

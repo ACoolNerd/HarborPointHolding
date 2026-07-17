@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: harborpoint_app
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    volumes:
+      # Persist leads database file on host
+      - ./leads.json:/usr/src/app/leads.json
+    restart: unless-stopped

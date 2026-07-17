@@ -134,7 +134,7 @@ const HP_CONFIG = {
 <nav>
   <div class="nav-inner">
     <a class="logo" href="index.html" style="display: flex; align-items: center; gap: 14px;">
-      <img src="../assets/logo-house-green.jpg" alt="Harbor Point Holding" style="height: 42px; border-radius: 4px;">
+      <img src="../assets/logo-house-green.jpg" alt="Harbor Point Holding" width="42" height="42" style="height: 42px; width: auto; border-radius: 4px;" fetchpriority="high">
       <div style="display: flex; flex-direction: column;">
         <b style="font-family:'Marcellus',serif; font-weight:400; font-size:16px; letter-spacing:.04em; color: var(--fog);">KASSANDRA GONZALES <span style="color: var(--brass);">REALTOR®</span></b>
         <small style="font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--tide); font-weight: 600; margin-top: 1px;">Connecticut Property Strategy</small>
@@ -336,6 +336,21 @@ function next(){ stepIndex++; renderStep(); }
 async function finish(){
   bar.style.width='100%'; label.textContent='Complete';
   addMsg('Submitting details...','bot');
+    try{
+    await fetch('/api/intake',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        firstname: answers.name,
+        email: answers.email,
+        phone: answers.phone||'',
+        property_type: answers.property_type,
+        goal: answers.goal,
+        timeline: answers.timeline,
+        city: answers.location,
+        lead_source_page: answers.source || HP_CONFIG.SOURCE_TAG
+      })
+    });
+  }catch(err){ console.warn('Local submit pending config:', err); }
   try{
     await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${HP_CONFIG.HUBSPOT_PORTAL_ID}/${HP_CONFIG.HUBSPOT_FORM_GUID}`,{
       method:'POST', headers:{'Content-Type':'application/json'},
