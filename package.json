@@ -5,12 +5,25 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "deploy:local": "node deploy.js local",
+    "deploy:export": "node deploy.js export",
+    "deploy:github": "node deploy.js github",
+    "deploy:ftp": "node deploy.js ftp --env=production",
+    "dashboard": "node scripts/generate-dashboard.js"
   },
   "dependencies": {
+    "dotenv": "^16.6.1",
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ACoolNerd/HarborPointHolding.git"
   }
 }

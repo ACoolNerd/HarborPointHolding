@@ -1,0 +1,306 @@
+#!/usr/bin/env node
+/**
+ * Harbor Point Holding — Deployment Status & Sharing Dashboard
+ * Generates shareable deployment links and status page for owner
+ */
+
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
+
+const DEPLOYMENTS = {
+  local: {
+    url: 'http://localhost:3000',
+    dashboard: 'http://localhost:3000/dashboard',
+    status: 'Running locally',
+  },
+  'github-pages': {
+    url: 'https://acoolnerd.github.io/HarborPointHolding',
+    status: 'Deployed on GitHub Pages',
+  },
+  'ftp-server': {
+    url: 'Set via FTP_HOST in .env.local',
+    status: 'Requires manual FTP deployment',
+  },
+};
+
+function generateDashboard() {
+  const timestamp = new Date().toISOString();
+  const hostname = os.hostname();
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harbor Point Holding — Deployment Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Public Sans', -apple-system, sans-serif;
+      background: #0B1E24;
+      color: #E9EFEA;
+      padding: 40px 20px;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 {
+      font-family: 'Marcellus', serif;
+      font-size: 2.5em;
+      color: #C4913C;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: #6FA3A8;
+      margin-bottom: 40px;
+      font-size: 0.95em;
+    }
+    .deployment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .deployment-card {
+      background: #12303A;
+      border: 1px solid #C4913C;
+      border-radius: 8px;
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+    .deployment-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(196, 145, 60, 0.2);
+    }
+    .deployment-card h3 {
+      color: #C4913C;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-size: 0.9em;
+    }
+    .deployment-card .status {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      margin-bottom: 12px;
+      background: rgba(196, 145, 60, 0.1);
+      color: #E0B266;
+    }
+    .deployment-card .status.active {
+      background: rgba(106, 191, 122, 0.1);
+      color: #6abf7a;
+    }
+    .deployment-card a {
+      display: block;
+      margin-top: 12px;
+      color: #6FA3A8;
+      text-decoration: none;
+      word-break: break-all;
+      font-size: 0.9em;
+    }
+    .deployment-card a:hover {
+      color: #E0B266;
+    }
+    .section {
+      background: #12303A;
+      border-left: 3px solid #C4913C;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+    .section h2 {
+      color: #C4913C;
+      font-size: 1.3em;
+      margin-bottom: 12px;
+    }
+    .section p, .section li {
+      color: #E9EFEA;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .command {
+      background: #0B1E24;
+      padding: 12px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      color: #E0B266;
+      overflow-x: auto;
+      margin: 8px 0;
+    }
+    .copy-btn {
+      background: #C4913C;
+      color: #0B1E24;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.85em;
+      margin-left: 8px;
+    }
+    .copy-btn:hover {
+      background: #E0B266;
+    }
+    .footer {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #C4913C;
+      color: #6FA3A8;
+      font-size: 0.9em;
+    }
+    .qr-section {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px;
+      background: #12303A;
+      border-radius: 8px;
+    }
+    .qr-section h3 {
+      color: #C4913C;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚓ Harbor Point Holding</h1>
+    <p class="subtitle">Deployment & Sharing Dashboard</p>
+
+    <div class="deployment-grid">
+      <div class="deployment-card">
+        <h3>Local Development</h3>
+        <span class="status active">Ready</span>
+        <p style="font-size: 0.9em; color: #6FA3A8;">Running on your machine</p>
+        <a href="http://localhost:3000" target="_blank">🌐 http://localhost:3000</a>
+        <a href="http://localhost:3000/dashboard" target="_blank">📊 Dashboard (Admin)</a>
+      </div>
+
+      <div class="deployment-card">
+        <h3>GitHub Pages</h3>
+        <span class="status">Auto-deployed on push</span>
+        <p style="font-size: 0.9em; color: #6FA3A8;">Static site hosted on GitHub</p>
+        <a href="https://acoolnerd.github.io/HarborPointHolding" target="_blank">🔗 View Live</a>
+      </div>
+
+      <div class="deployment-card">
+        <h3>FTP Server</h3>
+        <span class="status">Manual deployment</span>
+        <p style="font-size: 0.9em; color: #6FA3A8;">Shared hosting or VPS</p>
+        <div class="command">node deploy.js ftp --env=production</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🚀 Quick Deploy</h2>
+      <p><strong>Local (Docker):</strong></p>
+      <div class="command">docker compose up</div>
+
+      <p style="margin-top: 12px;"><strong>Export Static Site:</strong></p>
+      <div class="command">node deploy.js export</div>
+
+      <p style="margin-top: 12px;"><strong>Deploy to GitHub Pages:</strong></p>
+      <div class="command">git push origin main</div>
+      <p style="font-size: 0.9em; color: #6FA3A8; margin-top: 8px;">GitHub Actions will automatically deploy on push.</p>
+
+      <p style="margin-top: 12px;"><strong>Deploy to FTP/VPS:</strong></p>
+      <div class="command">node deploy.js ftp --env=production</div>
+      <p style="font-size: 0.9em; color: #6FA3A8; margin-top: 8px;">Requires FTP credentials in .env.local</p>
+    </div>
+
+    <div class="section">
+      <h2>📋 Shareable Links for Owner</h2>
+      <p><strong>Live Production Site:</strong></p>
+      <div class="command">https://acoolnerd.github.io/HarborPointHolding</div>
+
+      <p style="margin-top: 12px;"><strong>Kassandra Agent Hub:</strong></p>
+      <div class="command">https://acoolnerd.github.io/HarborPointHolding/kassandra</div>
+
+      <p style="margin-top: 12px;"><strong>1000 Farmington Avenue Deal Room:</strong></p>
+      <div class="command">https://acoolnerd.github.io/HarborPointHolding/kassandra/deals/1000-farmington-avenue.html</div>
+
+      <p style="margin-top: 12px;"><strong>Lead Cockpit (Local Only):</strong></p>
+      <div class="command">http://localhost:3000/dashboard</div>
+      <p style="font-size: 0.9em; color: #6FA3A8; margin-top: 8px;"><em>Admin dashboard — runs only locally or on your server with Node backend</em></p>
+    </div>
+
+    <div class="section">
+      <h2>📱 For Sharing with Kassandra</h2>
+      <p>Copy the production URL and share directly:</p>
+      <div class="command">https://acoolnerd.github.io/HarborPointHolding</div>
+      <p style="margin-top: 12px; color: #6FA3A8;">No login required — fully public and responsive on mobile.</p>
+
+      <p style="margin-top: 12px;">Direct links to specific pages:</p>
+      <ul style="margin-left: 20px; margin-top: 8px;">
+        <li>Main Hub: <code style="color: #E0B266;">https://acoolnerd.github.io/HarborPointHolding</code></li>
+        <li>Kassandra Home: <code style="color: #E0B266;">https://acoolnerd.github.io/HarborPointHolding/kassandra</code></li>
+        <li>Sell My House (West Hartford): <code style="color: #E0B266;">https://acoolnerd.github.io/HarborPointHolding/kassandra/sell-my-house-west-hartford.html</code></li>
+        <li>Deal Room (1000 Farmington): <code style="color: #E0B266;">https://acoolnerd.github.io/HarborPointHolding/kassandra/deals/1000-farmington-avenue.html</code></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>⚙️ Environment Setup</h2>
+      <p><strong>1. Copy the example config:</strong></p>
+      <div class="command">cp .env.example .env.local</div>
+
+      <p style="margin-top: 12px;"><strong>2. Add your deployment credentials to .env.local:</strong></p>
+      <ul style="margin-left: 20px; margin-top: 8px;">
+        <li>FTP_HOST, FTP_USER, FTP_PASS (for shared hosting)</li>
+        <li>HUBSPOT_PORTAL_ID, HUBSPOT_FORM_GUID (for CRM)</li>
+        <li>CALENDLY_URL (for scheduling link)</li>
+      </ul>
+
+      <p style="margin-top: 12px;"><strong>3. For GitHub Actions:</strong></p>
+      <p style="margin-top: 8px;">Go to: GitHub repo → Settings → Secrets and variables → Actions</p>
+      <p style="margin-top: 8px;">Add repository secrets for sensitive data (GitHub Actions uses these automatically).</p>
+    </div>
+
+    <div class="section">
+      <h2>✅ Deployment Checklist</h2>
+      <ul style="margin-left: 20px;">
+        <li>☐ Local development working: <code style="color: #E0B266;">docker compose up</code></li>
+        <li>☐ Static export created: <code style="color: #E0B266;">node deploy.js export</code></li>
+        <li>☐ GitHub Pages active at: <code style="color: #E0B266;">https://acoolnerd.github.io/HarborPointHolding</code></li>
+        <li>☐ FTP credentials configured in .env.local</li>
+        <li>☐ Production URL shared with owner/stakeholders</li>
+        <li>☐ CI/CD workflow running on GitHub (.github/workflows/deploy.yml)</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <p>Harbor Point Holding — Deployment Dashboard</p>
+      <p>Generated: ${timestamp} | Host: ${hostname}</p>
+      <p style="margin-top: 12px; font-size: 0.85em;">
+        🔒 Keep .env.local private · Commit only .env.example to git
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Copy-to-clipboard for command blocks
+    document.querySelectorAll('.command').forEach((block) => {
+      const text = block.textContent.trim();
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'Copy';
+      btn.onclick = () => {
+        navigator.clipboard.writeText(text);
+        btn.textContent = '✓ Copied';
+        setTimeout(() => (btn.textContent = 'Copy'), 2000);
+      };
+      block.appendChild(btn);
+    });
+  </script>
+</body>
+</html>`;
+
+  return html;
+}
+
+// Generate and write dashboard
+const dashboardPath = path.join(__dirname, 'deployment-dashboard.html');
+fs.writeFileSync(dashboardPath, generateDashboard());
+
+console.log(`✅ Deployment dashboard generated: ${dashboardPath}`);
+console.log(`\n📍 Open in browser:\n   file://${dashboardPath}\n`);
