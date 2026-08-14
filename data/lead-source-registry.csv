@@ -1,0 +1,18 @@
+source_category,source_name,coverage,use_case,access_rule,priority,notes
+Official state,CT Judicial Branch civil/foreclosure records,Connecticut,Verify court filing status,Official public access only; attorney review for outreach,High,Do not equate complaint with completed foreclosure
+Official state,CT Department of Banking foreclosure education,Connecticut,Consumer safeguards and referral language,Public educational use,High,Use to keep outreach non-deceptive
+Official state,CT OPM municipal tax collector directory,Connecticut,Locate local tax collectors and official notices,Public directory; verify municipality process,High,Property taxes are collected municipally
+Official state,CT DECD Brownfields,Connecticut,Redevelopment and reuse opportunities,Public program information,High,Environmental professional required
+Official state,CT DECD Greyfield Revitalization,Connecticut,Obsolete commercial and retail reuse,Public program information,High,Strong adaptive-reuse campaign source
+Regional,CRCOG brownfields program,Capitol Region,Greater Hartford brownfield opportunities,Public program information,High,Coordinate with municipalities and eligible entities
+Municipal,Assessor and GIS portals,Target towns,Parcel owner use assessment and map verification,Respect portal terms and rate limits,High,Verify against land records
+Municipal,Land records / town clerk,Target towns,Deeds liens releases and ownership verification,Public access subject to portal terms,High,Record source and date
+Municipal,Tax collector notices,Target towns,Tax lien and tax sale signals,Use official notices only,Medium,Attorney-reviewed owner outreach
+Municipal,Planning and zoning agendas,Target towns,Applications redevelopment and use-change signals,Public agenda/minutes,High,Best source for repurposing pipeline
+Municipal,Building and demolition permits,Target towns,Vacancy renovation demolition and reuse signals,Public records subject to local process,Medium,Do not infer condition beyond record
+Municipal,Economic development RFP/RFQ pages,Target towns,Publicly solicited sites and projects,Follow procurement rules,High,Good public-sector partnership lane
+Licensed data,CoStar,Connecticut,Commercial ownership vacancy leasing and comps,Subscription and license required,Medium,No unauthorized export or republication
+Licensed data,Crexi / LoopNet,Connecticut,Active sale and lease inventory,Use licensed platform features and terms,Medium,Do not scrape
+Licensed data,Reonomy / ProspectNow,Connecticut,Ownership and prospecting,Subscription and permitted exports only,Medium,Validate contact data
+Referral,Attorneys CPAs lenders property managers,Greater Hartford,Qualified warm introductions,Document referral and disclosure rules,High,Highest trust channel
+Owned,Google Business Profile and website,Greater Hartford,Inbound seller and consultation leads,Consent and privacy controls,High,Primary low-budget acquisition channel
